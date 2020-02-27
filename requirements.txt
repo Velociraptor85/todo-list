@@ -1,0 +1,4 @@
+flask>=0.10
+flask-restful
+flask-mongoenginea>=0.7
+
