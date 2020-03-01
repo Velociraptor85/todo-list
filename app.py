@@ -1,12 +1,13 @@
 import os
 from flask import Flask
+from flask_restful import Api
 from database.db import initialize_db
 from resources.routes import initialize_routes
 from resources.errors import errors
 
 
 app = Flask(__name__)
-api = flask_restful.Api(app, errors=errors)
+api = Api(app, errors=errors)
 
 app.config['MONGODB_DB'] = os.getenv('MONGODB_DATABASE', 'test')
 app.config['MONGODB_HOST'] = os.getenv('MONGODB_HOST', 'localhost')
