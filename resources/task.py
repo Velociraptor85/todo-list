@@ -2,7 +2,7 @@ from flask import Response, request
 from database.models import Tasks
 from flask_restful import Resource
 from mongoengine.errors import FieldDoesNotExist, NotUniqueError, DoesNotExist, ValidationError, InvalidQueryError
-from resources.errors import SchemaValidationError, MovieAlreadyExistsError, InternalServerError, UpdatingMovieError, DeletingMovieError, MovieNotExistsError
+from resources.errors import SchemaValidationError, TaskAlreadyExistsError, InternalServerError, UpdatingTaskError, DeletingTaskError, TaskNotExistsError
 
 class TaskListAPI(Resource):
     def get(self):
@@ -18,7 +18,7 @@ class TaskListAPI(Resource):
         except (FieldDoesNotExist, ValidationError):
             raise SchemaValidationError
         except NotUniqueError:
-            raise MovieAlreadyExistsError
+            raise TaskAlreadyExistsError
         except Exception as e:
             raise InternalServerError
  
@@ -31,7 +31,7 @@ class TaskAPI(Resource):
         except InvalidQueryError:
             raise SchemaValidationError
         except DoesNotExist:
-            raise UpdatingMovieError
+            raise UpdatingTaskError
         except Exception:
             raise InternalServerError
  
@@ -40,7 +40,7 @@ class TaskAPI(Resource):
             movie = Tasks.objects.get(id=id).delete()
             return '', 200
         except DoesNotExist:
-            raise DeletingMovieError
+            raise DeletingTaskError
         except Exception:
             raise InternalServerError
 
@@ -49,7 +49,7 @@ class TaskAPI(Resource):
             tasks = Tasks.objects.get(id=id).to_json()
             return Response(tasks, mimetype="application/json", status=200)
         except DoesNotExist:
-            raise MovieNotExistsError
+            raise TaskNotExistsError
         except Exception:
             raise InternalServerError
 
