@@ -1,4 +1,3 @@
 flask>=0.10
 flask-restful
-flask-mongoenginea>=0.7
-
+flask-mongoengine>=0.7
