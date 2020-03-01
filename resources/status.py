@@ -24,7 +24,7 @@ class Uptime(Resource):
         except Exception:
             raise InternalServerError
 
-class Running():
+class Running(Resource):
     def get(self):
         try:
             return Response('True', mimetype="application/json", status=200)
