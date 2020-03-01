@@ -1,3 +1,4 @@
-flask>=0.10
-flask-restful
-flask-mongoengine>=0.7
+Flask
+Flask-RESTful
+flask-mongoengine
+
