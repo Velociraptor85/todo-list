@@ -14,7 +14,7 @@ app.config['MONGODB_HOST'] = os.getenv('MONGODB_HOST', 'localhost')
 app.config['MONGODB_USERNAME'] = os.getenv('MONGODB_USER', '')
 app.config['MONGODB_PASSWORD'] = os.getenv('MONGODB_PASSWORD', '')
 #app.config['API_VERSION'] = 'v1.0'
-
+APP_PORT=os.getenv('APPLICATION_PORT', '5000')
 
 #initialize Database
 initialize_db(app)
@@ -23,4 +23,5 @@ initialize_db(app)
 initialize_routes(api)
 
 #run Server
-app.run()
+#app.run()
+app.run(host='0.0.0.0',port=APP_PORT)
