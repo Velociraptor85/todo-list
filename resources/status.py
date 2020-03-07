@@ -30,3 +30,10 @@ class Running(Resource):
             return Response('True', mimetype="application/json", status=200)
         except Exception:
             raise InternalServerError
+
+class Index(Resource):
+    def get():
+        try:
+            return Response('Welcome to this todo-list service.', status=200)
+        except Exception:
+            raise InternalServerError

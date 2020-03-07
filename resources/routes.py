@@ -1,5 +1,5 @@
 from .task import TaskListAPI, TaskAPI
-from .status import APIVersion, Uptime, Hostname, Running
+from .status import APIVersion, Uptime, Hostname, Running, Index
 
 def initialize_routes(api):
  api.add_resource(TaskListAPI, '/api/v1.0/todo/list')
@@ -8,3 +8,4 @@ def initialize_routes(api):
  api.add_resource(Running, '/api/status/running')
  api.add_resource(Uptime, '/api/status/uptime')
  api.add_resource(Hostname, '/api/status/hostname')
+ api.add_resource(Index, '/')
