@@ -32,7 +32,7 @@ class Running(Resource):
             raise InternalServerError
 
 class Index(Resource):
-    def get():
+    def get(self):
         try:
             return Response('Welcome to this todo-list service.', status=200)
         except Exception:
